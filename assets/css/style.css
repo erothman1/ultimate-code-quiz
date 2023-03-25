@@ -2,15 +2,22 @@
     /* potential css variables  */
 }
 
+* {
+    color: rgb(56, 52, 52);
+}
+
 body {
     background-color: rgb(249, 222, 237);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.float-right {
+    float: right;
+}
+
 h1, h2 {
     text-align: center;
     margin: 30px 175px;
-    color: rgb(56, 52, 52);
 }
 
 button {
