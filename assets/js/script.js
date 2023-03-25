@@ -1,3 +1,40 @@
+//Array that contains questions, wrong answers, and right answer
+var questionsAnswers = [
+    {
+        question: "Question 1: What are reusable blocks of code that perform a specific task?",
+        answers: ["functions", "arguments", "if statements", "window"],
+        wrongAnswers: ["arguments", "if statements", "window"],
+        rightAnswer: "functions",
+    },
+    {
+        question: "Question 2: What type of scope is available to all functions?",
+        answers: ["local", "lexical", "global", "block"],
+        wrongAnswers: ["local", "lexical", "block"],
+        rightAnswer: "global",
+    },
+    {
+        question: "Question 3: How do you log the head tag and all of its children?",
+        answers: ["console.log(window)", "console.log(window.document)", "console.log(document.head)", "console.log(head)"],
+        wrongAnswers: ["console.log(window)", "console.log(window.document)", "console.log(head)"],
+        rightAnswer: "console.log(document.head)",
+    },
+    {
+        question: "Question 4: How many parameters does the .setAttribute() method take?",
+        answers: ["one", "two", "three", "four"],
+        wrongAnswers: ["one", "three", "four"],
+        rightAnswer: "two",
+    },
+    {
+        question: "Question 5: What method do you use to remove the last element of an array?",
+        answers: [".shift()", ".push()", ".pop()", ".remove()"],
+        wrongAnswers: [".shift()", ".push()", ".remove()"],
+        rightAnswer: ".pop()",
+    }
+
+
+]
+console.log(questionsAnswers[0].question)
+
 // Create variable for start button
 var startQuiz = document.getElementById("start")
 
