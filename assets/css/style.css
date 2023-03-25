@@ -28,3 +28,7 @@ button {
     color: rgb(255, 192, 235);
     background-color: rgb(56, 52, 52);
 }
+
+#quiz {
+    display: none;
+}

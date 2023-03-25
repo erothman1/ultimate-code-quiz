@@ -30,10 +30,7 @@ var questionsAnswers = [
         wrongAnswers: [".shift()", ".push()", ".remove()"],
         rightAnswer: ".pop()",
     }
-
-
 ]
-console.log(questionsAnswers[0].question)
 
 // Create variable for start button
 var startQuiz = document.getElementById("start")
@@ -67,9 +64,8 @@ function setTime() {
         }
 
     }, 1000)
-
-
 }
+
 //Listen for click event on start button
 //Clicking start button will initiate the countdown, hide start page, and take user to quiz page one 
 startQuiz.addEventListener("click", setTime)
