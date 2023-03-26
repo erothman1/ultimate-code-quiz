@@ -81,6 +81,7 @@ function setTime() {
 
         if (secondsLeft === 0 || index >= questionsAnswers.length){
             //Stops execution of action at set interval
+            timer.textContent = "Game over!!"
             clearInterval(timerInterval)
             finishedQuiz()   
         }
@@ -132,8 +133,6 @@ function compareAnswers(event) {
         secondsLeft -= 5
     }
 
-    console.log(element)
-
     index ++
 
     if (index < questionsAnswers.length){
@@ -141,14 +140,13 @@ function compareAnswers(event) {
     } else {
         finishedQuiz()
     }
-
-
-    
 }
 
 var allDone = document.getElementById("all-done")
 
 var finalScore = document.getElementById("final-score")
+
+var submitButton = document.getElementById("submit")
 
 function finishedQuiz() {
     container.setAttribute("style", "display: none")
@@ -156,6 +154,7 @@ function finishedQuiz() {
 
     finalScore.textContent = "Your final score is " + secondsLeft
 
+    // submitButton.addEventListener("click", function)
 }
 
 
