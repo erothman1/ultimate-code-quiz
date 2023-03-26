@@ -68,62 +68,6 @@ var nextFour = document.getElementById("next-four")
 //variable for all buttons
 var button = document.querySelector(".button")
 
-//Function shows first quiz page
-var index = 0
-function quiz() {
-    container.setAttribute("style", "display: block")
-
-    questionPage.textContent = questionsAnswers[index].question
-
-    nextOne.textContent = questionsAnswers[index].answers[0]
-    nextTwo.textContent = questionsAnswers[index].answers[1]
-    nextThree.textContent = questionsAnswers[index].answers[2]
-    nextFour.textContent = questionsAnswers[index].answers[3]
-
-    //Listens for click event on each button to compare answers
-    nextOne.addEventListener("click", compareAnswers)
-    nextTwo.addEventListener("click", compareAnswers)
-    nextThree.addEventListener("click", compareAnswers)
-    nextFour.addEventListener("click", compareAnswers)
-}
-
-//Function to get next question
-function nextQuestion() {
-    index++
-    questionPage.textContent = questionsAnswers[index].question
-
-    nextOne.textContent = questionsAnswers[index].answers[0]
-    nextTwo.textContent = questionsAnswers[index].answers[1]
-    nextThree.textContent = questionsAnswers[index].answers[2]
-    nextFour.textContent = questionsAnswers[index].answers[3]
-
-    //Listens for click event on each button to compare answers
-    nextOne.addEventListener("click", compareAnswers)
-    nextTwo.addEventListener("click", compareAnswers)
-    nextThree.addEventListener("click", compareAnswers)
-    nextFour.addEventListener("click", compareAnswers)
-}
-
-//Function to compare answer choices
-var h3 = document.querySelector(".right-wrong")
-var compareIndex = 0
-
-function compareAnswers(event) {
-
-    var element = event.target
-
-    if (element.matches("button") && element.textContent == questionsAnswers[compareIndex].rightAnswer) {
-        h3.textContent = "Good job! Correct!"
-    } else {
-        h3.textContent = "Wrong!"
-        secondsLeft -= 5
-    }
-
-    compareIndex ++
-
-console.log(element)
-}
-
 
 //setInterval function that holds countdown
 function setTime() {
@@ -145,7 +89,7 @@ function setTime() {
     }, 1000)
 
     //Shows quiz page
-    quiz()
+    quiz(index)
     
 }
 
@@ -153,9 +97,54 @@ function setTime() {
 //Clicking start button will initiate the countdown, hide start page, and take user to quiz page one 
 startQuiz.addEventListener("click", setTime)
 
-//Click events on answer buttons will call nextQuestion function
-nextOne.addEventListener("click", nextQuestion)
-nextTwo.addEventListener("click", nextQuestion)
-nextThree.addEventListener("click", nextQuestion)
-nextFour.addEventListener("click", nextQuestion)
+//Function navigates through quiz pages 
+var index = 0
+
+function quiz(index) {
+    container.setAttribute("style", "display: block")
+
+    for (var i = 0; i < questionsAnswers.length; i ++) {
+        questionPage.textContent = questionsAnswers[index].question
+
+        nextOne.textContent = questionsAnswers[index].answers[0]
+        nextTwo.textContent = questionsAnswers[index].answers[1]
+        nextThree.textContent = questionsAnswers[index].answers[2]
+        nextFour.textContent = questionsAnswers[index].answers[3]
+    }
+
+    //Listens for click event on each button to compare answers
+    nextOne.addEventListener("click", compareAnswers)
+    nextTwo.addEventListener("click", compareAnswers)
+    nextThree.addEventListener("click", compareAnswers)
+    nextFour.addEventListener("click", compareAnswers)
+}
+
+//Function to compare answer choices
+var h3 = document.querySelector(".right-wrong")
+
+function compareAnswers(event) {
+
+    var element = event.target
+
+    if (element.matches("button") && element.textContent == questionsAnswers[index].rightAnswer) {
+        h3.textContent = "Good job! Correct!"
+    } else {
+        h3.textContent = "Wrong!"
+        secondsLeft -= 5
+    }
+
+    index ++
+
+    quiz(index)
+}
+
+
+
+
+
+
+
+
+
+
 
