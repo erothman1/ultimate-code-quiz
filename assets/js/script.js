@@ -68,7 +68,6 @@ var nextFour = document.getElementById("next-four")
 //variable for all buttons
 var button = document.querySelector(".button")
 
-
 //setInterval function that holds countdown
 function setTime() {
 
@@ -129,13 +128,29 @@ function compareAnswers(event) {
     if (element.matches("button") && element.textContent == questionsAnswers[index].rightAnswer) {
         h3.textContent = "Good job! Correct!"
     } else {
-        h3.textContent = "Wrong!"
+        h3.textContent = "Wrong! Minus 5 on the clock!"
         secondsLeft -= 5
     }
 
-    index ++
+    console.log(element)
 
-    quiz(index)
+    if (index < questionsAnswers.length){
+        index ++
+        quiz(index)
+    } else {
+        finishedQuiz()
+    }
+
+
+    
+}
+
+var allDone = document.getElementById("all-done")
+
+function finishedQuiz() {
+    container.setAttribute("style", "display: none")
+    allDone.setAttribute("style", "display: block")
+
 }
 
 

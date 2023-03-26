@@ -32,3 +32,7 @@ button {
 #quiz-container {
     display: none;
 }
+
+#all-done {
+    display: none;
+}
