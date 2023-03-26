@@ -78,26 +78,25 @@ var choiceThree = document.getElementById("choice-three")
 var choiceFour = document.getElementById("choice-four")
 
 //Function shows first quiz page
+var index = 0
 function quiz() {
     container.setAttribute("style", "display: block")
 
-    questionPage.textContent = questionsAnswers[0].question
-    choiceOne.textContent = questionsAnswers[0].answers[0]
-    choiceTwo.textContent = questionsAnswers[0].answers[1]
-    choiceThree.textContent = questionsAnswers[0].answers[2]
-    choiceFour.textContent = questionsAnswers[0].answers[3]
-
+    questionPage.textContent = questionsAnswers[index].question
+    choiceOne.textContent = questionsAnswers[index].answers[0]
+    choiceTwo.textContent = questionsAnswers[index].answers[1]
+    choiceThree.textContent = questionsAnswers[index].answers[2]
+    choiceFour.textContent = questionsAnswers[index].answers[3]
 }
 
 //Function to get next question
 function nextQuestion() {
-    for (i = 1; i < questionsAnswers.length; i ++) {
-        questionPage.textContent = questionsAnswers[i].question
-        choiceOne.textContent = questionsAnswers[i].answers[0]
-        choiceTwo.textContent = questionsAnswers[i].answers[1]
-        choiceThree.textContent = questionsAnswers[i].answers[2]
-        choiceFour.textContent = questionsAnswers[i].answers[3]
-    }
+    index++
+    questionPage.textContent = questionsAnswers[index].question
+    choiceOne.textContent = questionsAnswers[index].answers[0]
+    choiceTwo.textContent = questionsAnswers[index].answers[1]
+    choiceThree.textContent = questionsAnswers[index].answers[2]
+    choiceFour.textContent = questionsAnswers[index].answers[3]
 }
 
 //Click events on answer buttons will call nextQuestion function
