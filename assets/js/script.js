@@ -79,10 +79,10 @@ function setTime() {
         secondsLeft --
         timer.textContent = secondsLeft
 
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0 || index >= questionsAnswers.length){
             //Stops execution of action at set interval
             clearInterval(timerInterval)
-            
+            finishedQuiz()   
         }
 
     }, 1000)
@@ -134,8 +134,9 @@ function compareAnswers(event) {
 
     console.log(element)
 
+    index ++
+
     if (index < questionsAnswers.length){
-        index ++
         quiz(index)
     } else {
         finishedQuiz()
@@ -147,9 +148,13 @@ function compareAnswers(event) {
 
 var allDone = document.getElementById("all-done")
 
+var finalScore = document.getElementById("final-score")
+
 function finishedQuiz() {
     container.setAttribute("style", "display: none")
     allDone.setAttribute("style", "display: block")
+
+    finalScore.textContent = "Your final score is " + secondsLeft
 
 }
 
