@@ -69,3 +69,16 @@ function setTime() {
 //Listen for click event on start button
 //Clicking start button will initiate the countdown, hide start page, and take user to quiz page one 
 startQuiz.addEventListener("click", setTime)
+
+//Create variable for id carouselbox
+var carousel = document.getElementById("carouselbox")
+
+//Create variable for question
+var question = document.querySelector(".question")
+
+//Create variable for answers
+var answers = document.querySelector(".answers")
+
+//Create variable for button elements
+var next = document.querySelectorAll(".next")
+
