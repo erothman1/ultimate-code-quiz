@@ -126,7 +126,7 @@ function compareAnswers(event) {
 
     var element = event.target
 
-    if (element.matches("button") && element.textContent == questionsAnswers[index].rightAnswer) {
+    if (element.textContent == questionsAnswers[index].rightAnswer) {
         h3.textContent = "Good job! Correct!"
     } else {
         h3.textContent = "Wrong! Minus 5 on the clock!"
