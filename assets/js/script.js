@@ -47,6 +47,68 @@ var secondsLeft = 75
 //Puts timer content on screen 
 timer.textContent = secondsLeft
 
+//Create variable for quiz container
+var container = document.getElementById("quiz-container")
+
+//Create variable for id carouselbox
+var carousel = document.getElementById("carouselbox")
+
+//Create variable for question
+var questionPage = document.querySelector(".question")
+
+//Create variable for answers
+var answersPage = document.querySelector(".answers")
+
+//Create variable for button elements
+var nextOne = document.querySelector(".next-one")
+var nextTwo = document.querySelector(".next-two")
+var nextThree = document.querySelector(".next-three")
+var nextFour = document.querySelector(".next-four")
+
+//Create variable for choice one button
+var choiceOne = document.getElementById("choice-one")
+
+//Create variable for choice two button
+var choiceTwo = document.getElementById("choice-two")
+
+//Create variable for choice three button
+var choiceThree = document.getElementById("choice-three")
+
+//Create variable for choice four button
+var choiceFour = document.getElementById("choice-four")
+
+//Function shows first quiz page
+function quiz() {
+    container.setAttribute("style", "display: block")
+
+    questionPage.textContent = questionsAnswers[0].question
+    choiceOne.textContent = questionsAnswers[0].answers[0]
+    choiceTwo.textContent = questionsAnswers[0].answers[1]
+    choiceThree.textContent = questionsAnswers[0].answers[2]
+    choiceFour.textContent = questionsAnswers[0].answers[3]
+
+}
+
+//Function to get next question
+function nextQuestion() {
+    for (i = 1; i < questionsAnswers.length; i ++) {
+        questionPage.textContent = questionsAnswers[i].question
+        choiceOne.textContent = questionsAnswers[i].answers[0]
+        choiceTwo.textContent = questionsAnswers[i].answers[1]
+        choiceThree.textContent = questionsAnswers[i].answers[2]
+        choiceFour.textContent = questionsAnswers[i].answers[3]
+    }
+}
+
+//Click events on answer buttons will call nextQuestion function
+nextOne.addEventListener("click", nextQuestion)
+nextTwo.addEventListener("click", nextQuestion)
+nextThree.addEventListener("click", nextQuestion)
+nextFour.addEventListener("click", nextQuestion)
+
+
+
+
 //setInterval function that holds countdown
 function setTime() {
 
@@ -61,24 +123,16 @@ function setTime() {
         if (secondsLeft === 0) {
             //Stops execution of action at set interval
             clearInterval(timerInterval)
+            
         }
 
     }, 1000)
+
+    //Shows quiz page
+    quiz()
+    
 }
 
 //Listen for click event on start button
 //Clicking start button will initiate the countdown, hide start page, and take user to quiz page one 
 startQuiz.addEventListener("click", setTime)
-
-//Create variable for id carouselbox
-var carousel = document.getElementById("carouselbox")
-
-//Create variable for question
-var question = document.querySelector(".question")
-
-//Create variable for answers
-var answers = document.querySelector(".answers")
-
-//Create variable for button elements
-var next = document.querySelectorAll(".next")
-
