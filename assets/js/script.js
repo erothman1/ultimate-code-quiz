@@ -60,22 +60,13 @@ var questionPage = document.querySelector(".question")
 var answersPage = document.querySelector(".answers")
 
 //Create variable for button elements
-var nextOne = document.querySelector(".next-one")
-var nextTwo = document.querySelector(".next-two")
-var nextThree = document.querySelector(".next-three")
-var nextFour = document.querySelector(".next-four")
+var nextOne = document.getElementById("next-one")
+var nextTwo = document.getElementById("next-two")
+var nextThree = document.getElementById("next-three")
+var nextFour = document.getElementById("next-four")
 
-//Create variable for choice one button
-var choiceOne = document.getElementById("choice-one")
-
-//Create variable for choice two button
-var choiceTwo = document.getElementById("choice-two")
-
-//Create variable for choice three button
-var choiceThree = document.getElementById("choice-three")
-
-//Create variable for choice four button
-var choiceFour = document.getElementById("choice-four")
+//variable for all buttons
+var button = document.querySelector(".button")
 
 //Function shows first quiz page
 var index = 0
@@ -83,29 +74,55 @@ function quiz() {
     container.setAttribute("style", "display: block")
 
     questionPage.textContent = questionsAnswers[index].question
-    choiceOne.textContent = questionsAnswers[index].answers[0]
-    choiceTwo.textContent = questionsAnswers[index].answers[1]
-    choiceThree.textContent = questionsAnswers[index].answers[2]
-    choiceFour.textContent = questionsAnswers[index].answers[3]
+
+    nextOne.textContent = questionsAnswers[index].answers[0]
+    nextTwo.textContent = questionsAnswers[index].answers[1]
+    nextThree.textContent = questionsAnswers[index].answers[2]
+    nextFour.textContent = questionsAnswers[index].answers[3]
+
+    //Listens for click event on each button to compare answers
+    nextOne.addEventListener("click", compareAnswers)
+    nextTwo.addEventListener("click", compareAnswers)
+    nextThree.addEventListener("click", compareAnswers)
+    nextFour.addEventListener("click", compareAnswers)
 }
 
 //Function to get next question
 function nextQuestion() {
     index++
     questionPage.textContent = questionsAnswers[index].question
-    choiceOne.textContent = questionsAnswers[index].answers[0]
-    choiceTwo.textContent = questionsAnswers[index].answers[1]
-    choiceThree.textContent = questionsAnswers[index].answers[2]
-    choiceFour.textContent = questionsAnswers[index].answers[3]
+
+    nextOne.textContent = questionsAnswers[index].answers[0]
+    nextTwo.textContent = questionsAnswers[index].answers[1]
+    nextThree.textContent = questionsAnswers[index].answers[2]
+    nextFour.textContent = questionsAnswers[index].answers[3]
+
+    //Listens for click event on each button to compare answers
+    nextOne.addEventListener("click", compareAnswers)
+    nextTwo.addEventListener("click", compareAnswers)
+    nextThree.addEventListener("click", compareAnswers)
+    nextFour.addEventListener("click", compareAnswers)
 }
 
-//Click events on answer buttons will call nextQuestion function
-nextOne.addEventListener("click", nextQuestion)
-nextTwo.addEventListener("click", nextQuestion)
-nextThree.addEventListener("click", nextQuestion)
-nextFour.addEventListener("click", nextQuestion)
+//Function to compare answer choices
+var h3 = document.querySelector(".right-wrong")
+var compareIndex = 0
 
+function compareAnswers(event) {
 
+    var element = event.target
+
+    if (element.matches("button") && element.textContent == questionsAnswers[compareIndex].rightAnswer) {
+        h3.textContent = "Good job! Correct!"
+    } else {
+        h3.textContent = "Wrong!"
+        secondsLeft -= 5
+    }
+
+    compareIndex ++
+
+console.log(element)
+}
 
 
 //setInterval function that holds countdown
@@ -135,3 +152,10 @@ function setTime() {
 //Listen for click event on start button
 //Clicking start button will initiate the countdown, hide start page, and take user to quiz page one 
 startQuiz.addEventListener("click", setTime)
+
+//Click events on answer buttons will call nextQuestion function
+nextOne.addEventListener("click", nextQuestion)
+nextTwo.addEventListener("click", nextQuestion)
+nextThree.addEventListener("click", nextQuestion)
+nextFour.addEventListener("click", nextQuestion)
+
