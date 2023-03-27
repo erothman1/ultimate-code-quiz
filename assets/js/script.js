@@ -65,6 +65,30 @@ var nextFour = document.getElementById("next-four")
 //Create variable for h3 statement on quiz page
 var h3 = document.querySelector(".right-wrong")
 
+//Creates variable for finished quiz container
+var allDone = document.getElementById("all-done-container")
+
+//Creates variable for h2 where final score gets written
+var finalScoreH2 = document.getElementById("final-score")
+
+//Creates variable for submit button
+var submitButton = document.getElementById("submit")
+
+//Create variable for initials input variable 
+var initialInput = document.getElementById("initials")
+
+//Create variable for leaderboard page container 
+var leaderBoardPage = document.getElementById("leader-board")
+
+//Create variable for score count list 
+var scoreCount = document.getElementById("score-count")
+
+//Create variable for start over button
+var startOverButton = document.getElementById("start-over")
+
+//Create variable for clear storage button
+var clearStorageButton = document.getElementById("clear")
+
 //setInterval function that holds countdown
 function setTime() {
 
@@ -141,18 +165,6 @@ function compareAnswers(event) {
     }
 }
 
-//Creates variable for finished quiz container
-var allDone = document.getElementById("all-done-container")
-
-//Creates variable for h2 where final score gets written
-var finalScoreH2 = document.getElementById("final-score")
-
-//Creates variable for submit button
-var submitButton = document.getElementById("submit")
-
-//Create variable for initials input variable 
-var initialInput = document.getElementById("initials")
-
 //Function to show final score and get input from user for the leaderboard
 function finishedQuiz() {
     container.setAttribute("style", "display: none")
@@ -165,10 +177,7 @@ function finishedQuiz() {
 
 }
 
-var leaderBoardPage = document.getElementById("leader-board")
-
-var scoreCount = document.getElementById("score-count")
-
+//Function to show leaderboard page, add scores to local storage, and show past scores 
 function leaderBoard(event) {
 
     event.preventDefault()
@@ -185,10 +194,13 @@ function leaderBoard(event) {
 
     console.log(userScore)
 
+    //Create variable that has the stored user score items or is an empty array
     var storedScores = JSON.parse(localStorage.getItem("userScore")) || []
 
+    //Adds current user sccore to stored scores variable 
     storedScores.push(userScore)
 
+    //Iterates over stored scores and adds each one to list item on page
     for (var i = 0; i < storedScores.length; i++) {
 
         var li = document.createElement("li")
@@ -203,8 +215,8 @@ function leaderBoard(event) {
     localStorage.setItem("userScore", JSON.stringify(storedScores))
 }
 
-var startOverButton = document.getElementById("start-over")
-
+//Listens for click on start over button
+//FIX BUG IN START OVER / PLAY AGAIN
 startOverButton.addEventListener("click", function() {
 
     index = 0
@@ -218,10 +230,13 @@ startOverButton.addEventListener("click", function() {
     timer.textContent = 75
 })
 
-var clearStorageButton = document.getElementById("clear")
-
+//Listens for click on clear storage button
 clearStorageButton.addEventListener("click", function() {
+
+    //Sets text content for list to an empty string
     scoreCount.textContent = ""
+
+    //Clears local storage 
     localStorage.clear()
 })
 
