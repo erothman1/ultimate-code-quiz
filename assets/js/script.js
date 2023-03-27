@@ -166,6 +166,24 @@ function finishedQuiz() {
 
 var leaderBoard = document.getElementById("leader-board")
 
+var scoreCount = document.getElementById("score-count")
+
+var scores = []
+
+function renderScores() {
+    scoreCount.innerHTML = ""
+
+    for (var i = 0; i < scores.length; i++) {
+        var score = scores[i]
+
+        var li = document.createElement("li")
+        li.textContent = score
+        li.setAttribute("data-index", i)
+
+        scoreCount.appendChild(li)
+    }
+}
+
 function memoryStorage(event) {
 
     allDone.setAttribute("style", "display: none")
@@ -173,8 +191,22 @@ function memoryStorage(event) {
     leaderBoard.setAttribute("style", "display: block")
 
     event.preventDefault()
+
+    var storedScores = JSON.parse(localStorage.getItem("scores"))
+
+    if (storedScores !== null) {
+        scores = storedScores
+    }
+
+    renderScores()
 }
 
+function storedScores() {
+    localStorage.setItem("scores", JSON.stringify(scores))
+
+    storedScores()
+    renderScores()
+}
 
 
 
