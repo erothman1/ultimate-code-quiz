@@ -163,7 +163,7 @@ var leaderBoard = document.getElementById("leader-board")
 function memoryStorage(event) {
 
     allDone.setAttribute("style", "display: none")
-
+    timer.setAttribute("style", "display: none")
     leaderBoard.setAttribute("style", "display: block")
 
     event.preventDefault()
