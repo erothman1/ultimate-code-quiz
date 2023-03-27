@@ -150,7 +150,8 @@ var finalScoreH2 = document.getElementById("final-score")
 //Creates variable for submit button
 var submitButton = document.getElementById("submit")
 
-var finalScore = secondsLeft //not working
+//Create variable for initials input variable 
+var initialInput = document.getElementById("initials")
 
 //Function to show final score and get input from user for the leaderboard
 function finishedQuiz() {
@@ -159,54 +160,51 @@ function finishedQuiz() {
 
     finalScoreH2.textContent = "Your final score is " + secondsLeft
 
-    //Listens for click event on submit button and calls memoryStorage function when clicked
-    submitButton.addEventListener("click", memoryStorage)
+    //Listens for submit event on submit button and calls leaderBoard function when clicked or enter key is hit 
+    submitButton.addEventListener("click", leaderBoard)
 
 }
 
-var leaderBoard = document.getElementById("leader-board")
+var leaderBoardPage = document.getElementById("leader-board")
 
 var scoreCount = document.getElementById("score-count")
 
-var scores = []
-
-function renderScores() {
-    scoreCount.innerHTML = ""
-
-    for (var i = 0; i < scores.length; i++) {
-        var score = scores[i]
-
-        var li = document.createElement("li")
-        li.textContent = score
-        li.setAttribute("data-index", i)
-
-        scoreCount.appendChild(li)
-    }
-}
-
-function memoryStorage(event) {
-
-    allDone.setAttribute("style", "display: none")
-    timer.setAttribute("style", "display: none")
-    leaderBoard.setAttribute("style", "display: block")
+function leaderBoard(event) {
 
     event.preventDefault()
 
-    var storedScores = JSON.parse(localStorage.getItem("scores"))
+    allDone.setAttribute("style", "display: none")
+    timer.setAttribute("style", "display: none")
+    leaderBoardPage.setAttribute("style", "display: block")
 
-    if (storedScores !== null) {
-        scores = storedScores
+    //Save score data as an object
+    var userScore = {
+        initials: initialInput.value.trim(),
+        score: secondsLeft
     }
 
-    renderScores()
+    console.log(userScore)
+
+    var storedScores = JSON.parse(localStorage.getItem("userScore")) || []
+
+    storedScores.push(userScore)
+
+    for (var i = 0; i < storedScores.length; i++) {
+
+        var li = document.createElement("li")
+        li.textContent = "Initials: " + storedScores[i].initials + " Score: " + storedScores[i].score
+        li.setAttribute("data-index", i)
+        li.setAttribute("style", "list-style-type: none")
+
+        scoreCount.appendChild(li)
+    }
+
+    //Store object in storage as a string 
+    localStorage.setItem("userScore", JSON.stringify(storedScores))
+
+
 }
 
-function storedScores() {
-    localStorage.setItem("scores", JSON.stringify(scores))
-
-    storedScores()
-    renderScores()
-}
 
 
 
