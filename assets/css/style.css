@@ -38,3 +38,8 @@ button:hover {
     display: none;
     text-align: center;
 }
+
+#leader-board {
+    display: none;
+    text-align: center;
+}

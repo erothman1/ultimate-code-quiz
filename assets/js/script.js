@@ -154,9 +154,20 @@ function finishedQuiz() {
 
     finalScore.textContent = "Your final score is " + secondsLeft
 
-    // submitButton.addEventListener("click", function)
+    submitButton.addEventListener("click", memoryStorage)
+
 }
 
+var leaderBoard = document.getElementById("leader-board")
+
+function memoryStorage(event) {
+
+    allDone.setAttribute("style", "display: none")
+
+    leaderBoard.setAttribute("style", "display: block")
+
+    event.preventDefault()
+}
 
 
 
