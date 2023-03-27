@@ -206,12 +206,16 @@ function leaderBoard(event) {
 var startOverButton = document.getElementById("start-over")
 
 startOverButton.addEventListener("click", function() {
+
     index = 0
-    secondsLeft = 75
 
     leaderBoardPage.setAttribute("style", "display: none")
 
-    setTime()
+    startPage.setAttribute("style", "display: block")
+
+    timer.setAttribute("style", "display: block")
+
+    timer.textContent = 75
 })
 
 var clearStorageButton = document.getElementById("clear")

@@ -7,9 +7,10 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.float-right {
+.timer {
     text-align: right;
     margin-right: 20px;
+    font-size: 20px;
 }
 
 h1, h2 {
