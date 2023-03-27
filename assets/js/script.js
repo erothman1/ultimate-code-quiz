@@ -56,17 +56,14 @@ var carousel = document.getElementById("carouselbox")
 //Create variable for question
 var questionPage = document.querySelector(".question")
 
-//Create variable for answers
-var answersPage = document.querySelector(".answers")
-
 //Create variable for button elements
 var nextOne = document.getElementById("next-one")
 var nextTwo = document.getElementById("next-two")
 var nextThree = document.getElementById("next-three")
 var nextFour = document.getElementById("next-four")
 
-//variable for all buttons
-var button = document.querySelector(".button")
+//Create variable for h3 statement on quiz page
+var h3 = document.querySelector(".right-wrong")
 
 //setInterval function that holds countdown
 function setTime() {
@@ -90,7 +87,6 @@ function setTime() {
 
     //Shows quiz page
     quiz(index)
-    
 }
 
 //Listen for click event on start button
@@ -103,6 +99,7 @@ var index = 0
 function quiz(index) {
     container.setAttribute("style", "display: block")
 
+    //For loop iterates through array holding questions and answers
     for (var i = 0; i < questionsAnswers.length; i ++) {
         questionPage.textContent = questionsAnswers[index].question
 
@@ -112,29 +109,31 @@ function quiz(index) {
         nextFour.textContent = questionsAnswers[index].answers[3]
     }
 
-    //Listens for click event on each button to compare answers
+    //Listens for click event on each button to call compareAnswers function
     nextOne.addEventListener("click", compareAnswers)
     nextTwo.addEventListener("click", compareAnswers)
     nextThree.addEventListener("click", compareAnswers)
     nextFour.addEventListener("click", compareAnswers)
 }
 
-//Function to compare answer choices
-var h3 = document.querySelector(".right-wrong")
-
+//Function to compare answer choices and navigate through the quiz
 function compareAnswers(event) {
 
-    var element = event.target
+    //Creates variable for button that gets clicked
+    var buttonClicked = event.target
 
-    if (element.textContent == questionsAnswers[index].rightAnswer) {
+    //If button clicked is the right answer, show correct statement; if not, dock 5 minutes on clock and show wrong statement
+    if (buttonClicked.textContent == questionsAnswers[index].rightAnswer) {
         h3.textContent = "Good job! Correct!"
     } else {
         h3.textContent = "Wrong! Minus 5 on the clock!"
         secondsLeft -= 5
     }
 
+    //Adds one to index
     index ++
 
+    //If index is less than length of array with questions and answers, call quiz function again; if not, call finsihedQuiz function again
     if (index < questionsAnswers.length){
         quiz(index)
     } else {
@@ -142,18 +141,25 @@ function compareAnswers(event) {
     }
 }
 
-var allDone = document.getElementById("all-done")
+//Creates variable for finished quiz container
+var allDone = document.getElementById("all-done-container")
 
-var finalScore = document.getElementById("final-score")
+//Creates variable for h2 where final score gets written
+var finalScoreH2 = document.getElementById("final-score")
 
+//Creates variable for submit button
 var submitButton = document.getElementById("submit")
 
+var finalScore = secondsLeft //not working
+
+//Function to show final score and get input from user for the leaderboard
 function finishedQuiz() {
     container.setAttribute("style", "display: none")
     allDone.setAttribute("style", "display: block")
 
-    finalScore.textContent = "Your final score is " + secondsLeft
+    finalScoreH2.textContent = "Your final score is " + secondsLeft
 
+    //Listens for click event on submit button and calls memoryStorage function when clicked
     submitButton.addEventListener("click", memoryStorage)
 
 }
