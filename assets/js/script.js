@@ -201,14 +201,25 @@ function leaderBoard(event) {
 
     //Store object in storage as a string 
     localStorage.setItem("userScore", JSON.stringify(storedScores))
-
-
 }
 
+var startOverButton = document.getElementById("start-over")
 
+startOverButton.addEventListener("click", function() {
+    index = 0
+    secondsLeft = 75
 
+    leaderBoardPage.setAttribute("style", "display: none")
 
+    setTime()
+})
 
+var clearStorageButton = document.getElementById("clear")
+
+clearStorageButton.addEventListener("click", function() {
+    scoreCount.textContent = ""
+    localStorage.clear()
+})
 
 
 
