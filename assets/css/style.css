@@ -45,17 +45,7 @@ li {
     background-color: rgb(244 188 219);
 }
 
-#quiz-container {
-    display: none;
-    text-align: center;
-}
-
-#all-done-container {
-    display: none;
-    text-align: center;
-}
-
-#leader-board {
+#quiz-container, #all-done-container, #leader-board {
     display: none;
     text-align: center;
 }
