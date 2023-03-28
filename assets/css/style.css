@@ -41,6 +41,10 @@ button:hover {
     width: 80vw;
 }
 
+li {
+    background-color: rgb(244 188 219);
+}
+
 #quiz-container {
     display: none;
     text-align: center;
