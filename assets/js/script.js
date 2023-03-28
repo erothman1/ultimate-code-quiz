@@ -216,18 +216,10 @@ function leaderBoard(event) {
 }
 
 //Listens for click on start over button
-//FIX BUG IN START OVER / PLAY AGAIN
 startOverButton.addEventListener("click", function() {
 
-    index = 0
-
-    leaderBoardPage.setAttribute("style", "display: none")
-
-    startPage.setAttribute("style", "display: block")
-
-    timer.setAttribute("style", "display: block")
-
-    timer.textContent = 75
+    //Reloads app so user can start quiz from beginning
+    location.reload()
 })
 
 //Listens for click on clear storage button
